@@ -1,0 +1,48 @@
+<h1 *ngIf="!newItem">Bearbeitung von: {{product?.title}}</h1>
+<h1 *ngIf="newItem">Neues Produkt</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <div class="input-container">
+    <label for="title">Neuer Produktname:</label>
+    <input
+      id="title"
+      type="text"
+      placeholder="Produktname hier..."
+      formControlName="title"
+      (change)="inputError.title = false">
+  </div>
+
+  <div class="input-container">
+    <label for="isIngredient">
+      <input
+        id="isIngredient"
+        type="checkbox"
+        formControlName="isIngredient"
+      >
+      Produkt ist eine Zutat
+    </label>
+  </div>
+
+  <div class="button-container">
+    <button class="button green" type="submit">Speichern</button>
+    <button class="button red" (click)="productListComponent.closeEditor()">Zurück</button>
+  </div>
+
+</form>
+
+<div *ngIf="!newItem">
+  <h3>Eigenschaften auswählen</h3>
+
+  <ul class="prop-list">
+
+    <li *ngFor="let prop of allProperties">
+      <div class="prop-container" (click)="productListComponent.togglePropertie(prop, product?.id)">
+        <button class="button round {{checkPropInProduct(prop.id) ? 'green' : ''}}"></button>
+        <h4>{{prop.name}}</h4>
+      </div>
+
+    </li>
+
+  </ul>
+</div>

@@ -1,0 +1,24 @@
+<app-shoppinglist-editor *ngIf="editor" [shoppinglist]="editorShoppinglist" [newItem]="newItem"></app-shoppinglist-editor>
+
+<ng-template [ngIf]="!editor">
+
+  <div class="master-list-head">
+
+    <h1>Deine Einkaufslisten</h1>
+
+    <div class="button green" (click)="newListitem()">
+      <p class="button-text">+ neue Einkaufsliste</p>
+    </div>
+
+  </div>
+
+  <ul class="master-list__container">
+
+    <li *ngFor="let shoppinglist of managedList.list"
+        (click)="onClick(shoppinglist.id)">
+      <app-shoppinglist [shoppinglist]="shoppinglist"></app-shoppinglist>
+    </li>
+
+  </ul>
+
+</ng-template>

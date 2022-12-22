@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "app/styles/master-list";
+@import "app/styles/form";
+@import "app/styles/button";
+
+@color-bg-dark: #1c1c1c;
+@color-bg-light: #3a3a3a;
+@color-text: #ffffff;
+
+body {
+  background-color: @color-bg-dark;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 20px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+p, a,
+h1, h2, h3, h4, h5, h6,
+label {
+  font-family: Arial;
+  color: @color-text;
+  margin: 0;
+}
+
+p {
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3, h4, h5, h6 {
+  font-size: 1.2rem;
+}

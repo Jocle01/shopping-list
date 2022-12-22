@@ -1,0 +1,38 @@
+<div class="master-list-item__container">
+
+  <h3>{{dish?.title}}</h3>
+
+  <div class="properties__container">
+      <p>Schwierigkeit: {{dish?.difficulty ? dish?.difficulty + "/10" : "/"}}</p>
+      <p>Zubereitungsdauer: {{dish?.time ?? "/" }}</p>
+  </div>
+
+  <ng-template [ngIf]="dish?.isActive">
+
+    <div class="ingredients-list__container">
+
+      <ng-template ngFor let-product [ngForOf]="dish?.products">
+
+        <div class="ingredient-amount">
+          <p>{{product.amount + product.unit}}</p>
+        </div>
+
+        <div class="ingredient-title">
+          <h4>{{product.product.title}}</h4>
+          <button class="button red" (click)="dishListComponent.removeProductFromDish(product?.product?.id, dish?.id)">Löschen</button>
+        </div>
+
+      </ng-template>
+
+    </div>
+
+    <p>{{dish?.recipe}}</p>
+
+    <div class="button_container">
+      <button class="button orange" (click)="dishListComponent.editDish(dish)">Bearbeiten</button>
+      <button class="button red" (click)="dishListComponent.deleteDish(dish)">Löschen</button>
+    </div>
+
+  </ng-template>
+
+</div>

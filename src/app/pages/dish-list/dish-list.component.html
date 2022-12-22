@@ -1,0 +1,23 @@
+<app-dish-editor *ngIf="editor" [dish]="editorDish" [newItem]="newItem"></app-dish-editor>
+
+<ng-template [ngIf]="!editor">
+
+  <div class="master-list-head">
+
+    <h1>Gerichte</h1>
+
+    <div class="button green" (click)="newListitem()">
+      <p class="button-text">+ neues Gericht</p>
+    </div>
+
+  </div>
+
+  <ul class="master-list__container">
+
+    <li *ngFor="let dish of managedList.list" (click)="onClick(dish.id)">
+      <app-dish [dish]="dish"></app-dish>
+    </li>
+
+  </ul>
+
+</ng-template>

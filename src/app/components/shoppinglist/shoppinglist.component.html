@@ -1,0 +1,39 @@
+<div class="master-list-item__container {{shoppinglist?.finished ? 'finished' : ''}}">
+
+  <div class="title__container">
+    <h3>{{shoppinglist?.title}}{{shoppinglist?.finished ? ' (Erledigt)' : ''}}</h3>
+    <p>{{shoppinglist?.timestamp}}</p>
+  </div>
+
+  <ng-template [ngIf]="shoppinglist?.isActive">
+    <p>{{shoppinglist?.note ?? '' }}</p>
+
+    <div class="products-list__container">
+
+      <ng-template ngFor let-product [ngForOf]="shoppinglist?.products">
+
+        <div class="product-amount">
+          <p>{{product.amount + product.unit}}</p>
+        </div>
+
+        <div class="product-title">
+          <h4>{{product.product.title}}</h4>
+
+          <div class="button_container">
+            <button class="button red" (click)="shoppinglistListComponent.removeProductFromShoppinglist(product?.product?.id, shoppinglist?.id)">Löschen</button>
+            <button class="button {{product?.product?.finished ? 'green' : 'orange'}}" (click)="toggleProductFinished(product.product, shoppinglist?.id)">Check</button>
+          </div>
+        </div>
+
+      </ng-template>
+
+    </div>
+
+    <div class="button_container">
+      <button class="button orange" (click)="shoppinglistListComponent.editShoppinglist(shoppinglist)">Bearbeiten</button>
+      <button class="button {{ shoppinglist?.finished ? 'green' : 'red'}}" (click)="shoppinglistListComponent.toggleListDone(shoppinglist)">{{ shoppinglist?.finished ? 'freigeben' : 'als Erledigt markieren'}}</button>
+    </div>
+
+  </ng-template>
+
+</div>

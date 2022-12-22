@@ -1,0 +1,16 @@
+<div class="master-list-item__container">
+
+  <h3>{{product?.title}}</h3>
+
+  <ng-template [ngIf]="product?.isActive">
+
+    <p *ngFor="let propertie of product?.properties">{{propertie?.name}}</p>
+
+    <div class="button_container">
+      <button class="button orange" (click)="productListComponent.editProduct(product)">Bearbeiten</button>
+      <button class="button red" (click)="productListComponent.deleteProduct(product)">Löschen</button>
+    </div>
+
+  </ng-template>
+
+</div>

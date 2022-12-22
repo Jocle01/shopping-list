@@ -1,0 +1,24 @@
+<app-product-editor *ngIf="editor" [product]="editorProduct" [newItem]="newItem"></app-product-editor>
+
+<ng-template [ngIf]="!editor">
+
+  <div class="master-list-head">
+
+    <h1>Produkte / Zutaten</h1>
+
+    <div class="button green" (click)="newListitem()">
+      <p class="button-text">+ neues Produkt</p>
+    </div>
+
+  </div>
+
+  <ul class="master-list__container">
+
+    <li *ngFor="let product of managedList.list" (click)="onClick(product.id)">
+      <app-product [product]="product"></app-product>
+    </li>
+
+  </ul>
+
+</ng-template>
+

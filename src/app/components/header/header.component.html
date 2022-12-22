@@ -1,0 +1,17 @@
+<nav class="header-menu">
+
+  <div class="user-info-container">
+    <p>Eingeloggt als: <span class="user-name">{{appComponent.userName ?? '/'}}</span></p>
+
+    <div class="button red" (click)="authenticationService.logOut()">
+      <p class="button-text">Abmelden</p>
+    </div>
+  </div>
+
+  <ul>
+    <li><a routerLink="/einkaufslisten" routerLinkActive="active" ariaCurrentWhenActive="page">Einkaufslisten</a></li>
+    <li><a routerLink="/gerichte" routerLinkActive="active" ariaCurrentWhenActive="page">Gerichte</a></li>
+    <li><a routerLink="/produkte" routerLinkActive="active" ariaCurrentWhenActive="page">Produkte</a></li>
+  </ul>
+
+</nav>

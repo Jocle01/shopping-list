@@ -1,0 +1,36 @@
+<h1>Melde dich an!</h1>
+<p>
+  Benutzer müssen von einem Entwickler hinzugfefügt werden.<br>
+  Eine manuelle Registrierung ist aktuell noch nicht möglich.
+</p>
+
+<p class="credentials-error-message" *ngIf="inputError.credentials">
+  Die Anmeldedaten sind nicht korrekt.
+</p>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <div class="input-container">
+    <label for="userId">Benutzer-ID<span class="error-message" *ngIf="inputError.id">dies ist ein Pflichtfeld!</span></label>
+    <input
+      id="userId"
+      type="number"
+      placeholder="12345"
+      formControlName="userId"
+      (change)="inputError.id = false">
+  </div>
+
+  <div class="input-container">
+    <label for="password">Passwort<span class="error-message" *ngIf="inputError.pw">dies ist ein Pflichtfeld!</span></label>
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      (change)="inputError.pw = false"
+    >
+  </div>
+
+  <button class="button green" type="submit">Anmelden</button>
+
+</form>
+

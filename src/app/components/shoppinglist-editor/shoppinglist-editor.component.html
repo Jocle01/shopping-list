@@ -1,0 +1,60 @@
+<h1 *ngIf="!newItem">Bearbeitung von: {{shoppinglist?.title}}</h1>
+<h1 *ngIf="newItem">Neue Einkaufsliste</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <div class="input-container">
+    <label for="title">Neuer Listentitel</label>
+    <input
+      id="title"
+      type="text"
+      placeholder="Listentitel hier..."
+      formControlName="title">
+  </div>
+
+  <div class="input-container">
+    <label for="note">Neue Notiz</label>
+    <input
+      id="note"
+      type="text"
+      placeholder="Notiz hier..."
+      formControlName="note">
+  </div>
+
+  <div class="button-container">
+    <button class="button green" type="submit">Speichern</button>
+    <button class="button red" (click)="shoppinglistListComponent.closeEditor()">Zurück</button>
+  </div>
+
+</form>
+
+<div *ngIf="!newItem">
+  <h3>Produkt hinzufügen</h3>
+
+  <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+    <select id="productId" formControlName="productId">
+      <option *ngFor="let product of allProducts" value="{{product.id}}">{{product.title}}</option>
+    </select>
+
+    <div class="input-container">
+      <label for="amount">Menge</label>
+      <input
+        id="amount"
+        type="number"
+        placeholder="500"
+        formControlName="amount">
+    </div>
+
+    <div class="input-container">
+      <label for="unit">Einheit</label>
+      <input
+        id="unit"
+        type="text"
+        placeholder="g"
+        formControlName="unit">
+    </div>
+
+    <button class="button green" type="submit">Hinzufügen</button>
+  </form>
+
+</div>
